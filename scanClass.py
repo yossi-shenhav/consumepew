@@ -1,7 +1,6 @@
 import threading
 import time
 import random
-import nmap
 import subprocess
 import os
 import uuid
