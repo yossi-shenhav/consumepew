@@ -30,7 +30,7 @@ class XSSScan(Scan):
 		#I can implement in the subclass later - see if it works
 		
 		commands = []
-		commands = [f'katana -u https://{self.target} -o {self.directory}/katana.txt', f'cat {self.direcory}/katana.txt | dalfox pipe | tee {self.direcory}/{self.result_file}']	
+		commands = [f'katana -u https://{self.target} -o {self.directory}/katana.txt', f'cat {self.directory}/katana.txt | dalfox pipe | tee {self.directory}/{self.result_file}']	
 		return commands
 
 
