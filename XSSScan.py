@@ -11,11 +11,14 @@ class XSSScan(Scan):
 		try:
 			# Open the file and read the JSON data
 			with open(self.directory + "/" + self.result_file, 'r') as file:
-				lines = [line.strip() for line in file]				
+				lines = [line.strip() for line in file]	
+			print (f'lines:={lines}')			
 			indx = 0
 			for ln in lines:
+				print(f'ln:={ln}')
 				arr = ln.split()
 				key = arr[0][1:-1]
+				print(f'key:={key}')
 				keyarr = key.split("][")
 				key = keyarr[-1]
 				result[key] = arr[1]
