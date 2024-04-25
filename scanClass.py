@@ -5,6 +5,7 @@ import subprocess
 import os
 import uuid
 import tldextract
+import urllib.parse
 from config1 import LIB_4_RESULTS
 
 
@@ -91,6 +92,10 @@ class Scan:
 	
 	def format_result(self):
 		raise NotImplementedError("Subclasses must implement format_result method.")
+	
+	def urlEncode(self, str):
+		return urllib.parse.quote(url)
+
 
 
 
