@@ -27,7 +27,7 @@ class FfufScan(Scan):
 					#print(res)
 					key = self.escapeFireBaseKey(res["url"])
 					result[key] = res['status']
-			else
+			else:
 				result['error'] = f'no results - check log file at {self.directory}/{self.log_file}'
 
 		except Exception as e:
