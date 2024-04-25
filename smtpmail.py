@@ -19,6 +19,7 @@ def sendSMTP(to_email, subject, message):
 	msg['To'] = to_email
 	try:
 		s = smtplib.SMTP_SSL('smtp.gmail.com', '465')
+		s.set_debuglevel(1)
 		s.login(from_email, pwd)
 		s.sendmail(from_email, to_email, msg.as_string())
 		s.quit()
