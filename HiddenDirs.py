@@ -39,7 +39,7 @@ class FfufScan(Scan):
 
 	def getCommands(self):		
 		commands = []
-		commands = [f'ffuf -u https://{self.target}/FUZZ -w {self.wordlist} -H \'{USER_AGENT}\' -mc 200,204,301,302,307,401,405,500 -recursion -recursion-depth {RECURSION_DEPTH} -json -o {self.directory}/{self.result_file} -debuf-log {self.directory}/{self.result_file}']
+		commands = [f'ffuf -u https://{self.target}/FUZZ -w {self.wordlist} -H \'{USER_AGENT}\' -mc 200,204,301,302,307,401,405,500 -recursion -recursion-depth {RECURSION_DEPTH} -json -o {self.directory}/{self.result_file} -debuf-log {self.directory}/{self.log_file}']
 		return commands
 
 
