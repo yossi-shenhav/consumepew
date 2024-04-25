@@ -4,7 +4,7 @@ import smtplib
 import email.mime.text
 import os
 #from upload import upload2_s3
-from config1 import read_secret, GMAIL_ADDRESS, GMAIL_PASSWORD, BUCKET_URL
+from config1 import read_secret, GMAIL_ADDRESS, GMAIL_PASSWORD, BUCKET_URL, WEB_URL
 
 
 from email.mime.text import MIMEText
@@ -26,7 +26,7 @@ def sendSMTP(to_email, subject, message):
 		print("Email sent successfully!")
 	except Exception as e:
 		print("Email sending failed:", e)
-		print(f'Email:={from_email},	PWD:={pwd}')		
+		#print(f'Email:={from_email},	PWD:={pwd}')		
 
 
 def sendEmail(email, tid, scantype, success):
@@ -34,7 +34,7 @@ def sendEmail(email, tid, scantype, success):
     subject = 'Scan results from PewPew'
 
     if success:
-        message = f'<p>Scan results can be found on {BUCKET_URL}/{tid}</p><p>short reprt can be found on https://pewpew.comodosec.com/reports/{tid}/{scantype}</p>' 
+        message = f'<p>Scan results can be found on {BUCKET_URL}/{tid}</p><p>short reprt can be found on {WEB_URL}/reports/{tid}/{scantype}</p>' 
     else:
         print("{tid} Failed to upload file.")
         message = f'<p>Scan #{tid} did not suceeded </p>'
