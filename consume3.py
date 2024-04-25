@@ -38,11 +38,15 @@ def callback(ch, method, properties, body):
 		for scan in scans:
 			if scan.done == False:
 				if scan.is_ended_successfully():
-					print('scan.is_ended_successfully():')
+					print(f'{scan.scan_type} ended')
+					cnt = cnt | scan.bitwise
+					#set done to True so it will not happen twice
+					scan.done = True
 					#addnew scan data
 					results = scan.format_result()
 					print (results)
 					addNewScanData(scan.id, scan.scan_type, scan.target, results)
+					print ('added to db')
 					#upload to S3
 					s3obj = f'{scan.id}/{scan.scan_type}/{scan.result_file}'
 					file2upload = f'{scan.directory}/{scan.result_file}'
@@ -54,12 +58,6 @@ def callback(ch, method, properties, body):
 					except Exception as e:
 						print('email was not sent: ' , e)
 
-					#just know when to quit loop
-					#cnt = cnt | indices[indx]
-					cnt = cnt | scan.bitwise
-					#set done to True so it will not happen twice
-					scan.done = True
-					print(f'{scan.scan_type} ended succecfully')
 			
 		if cnt == (2**scancnt -1):
 			#if all scan complted - break out of while true
