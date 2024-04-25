@@ -38,9 +38,10 @@ def callback(ch, method, properties, body):
 		for scan in scans:
 			if scan.done == False:
 				if scan.is_ended_successfully():
+					print('scan.is_ended_successfully():')
 					#addnew scan data
 					results = scan.format_result()
-					#print (results)
+					print (results)
 					addNewScanData(scan.id, scan.scan_type, scan.target, results)
 					#upload to S3
 					s3obj = f'{scan.id}/{scan.scan_type}/{scan.result_file}'
